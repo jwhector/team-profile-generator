@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const generateHtml = require('./util/generateHtml');
+const generateHtml = require('./src/generateHtml');
 const fs = require('fs');
 
 async function getEmployee(type) {
@@ -75,7 +75,7 @@ async function main() {
         const manager = await getEmployee('Manager');
         team.push(new Manager(manager.name, manager.id, manager.email, manager.special));
         await getTeamMember(team);
-        console.log(team);
+        // console.log(team);
         fs.writeFileSync('./dist/index.html', generateHtml(team));
     } catch (err) {
         console.error(err);
